@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Forecast
+namespace Entities
 {
     public class Location : BaseEntity
     {
