@@ -34,6 +34,8 @@ namespace WeatherForecast
 
             services.AddMinimalMvc();
 
+            services.AddCustomApiVersioning();
+
             services.AddSwagger();
         }
 

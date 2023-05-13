@@ -45,5 +45,16 @@ namespace WebFramework.Configuration
             });
             services.AddSwaggerGenNewtonsoftSupport();
         }
+
+        public static void AddCustomApiVersioning(this IServiceCollection services)
+        {
+            services.AddApiVersioning(options =>
+            {
+                //url segment => {version}
+                options.AssumeDefaultVersionWhenUnspecified = true; //default => false;
+                options.DefaultApiVersion = new ApiVersion(1, 0); //v1.0 == v1
+                options.ReportApiVersions = true;
+            });
+        }
     }
 }

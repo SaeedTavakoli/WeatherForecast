@@ -162,24 +162,6 @@ namespace WebFramework.Swagger
             });
         }
 
-        public static IApplicationBuilder UseElmahCore(this IApplicationBuilder app, SiteSettings siteSettings)
-        {
-            Assert.NotNull(app, nameof(app));
-            Assert.NotNull(siteSettings, nameof(siteSettings));
-
-            app.UseWhen(context => context.Request.Path.StartsWithSegments(siteSettings.ElmahPath, StringComparison.OrdinalIgnoreCase), appBuilder =>
-            {
-                appBuilder.Use((ctx, next) =>
-                {
-                    ctx.Features.Get<IHttpBodyControlFeature>().AllowSynchronousIO = true;
-                    return next();
-                });
-            });
-            app.UseElmah();
-
-            return app;
-        }
-
         public static IApplicationBuilder UseSwaggerAndUI(this IApplicationBuilder app)
         {
             Assert.NotNull(app, nameof(app));
