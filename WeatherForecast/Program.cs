@@ -35,7 +35,7 @@ namespace WeatherForecast
 
 
             //Set deafult proxy
-            WebRequest.DefaultWebProxy = new WebProxy("http://127.0.0.1:8118", true) { UseDefaultCredentials = true };
+            //WebRequest.DefaultWebProxy = new WebProxy("http://127.0.0.1:8118", true) { UseDefaultCredentials = true };
 
             // You can configure your logger using a configuration file:
 

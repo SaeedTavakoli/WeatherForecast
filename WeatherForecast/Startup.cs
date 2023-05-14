@@ -3,10 +3,15 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Services.API.Interfaces;
+using Services.API;
+using WeatherForecast.Services.OpenWeather;
 using WebFramework.Configuration;
 using WebFramework.CustomMapping;
 using WebFramework.Middlewares;
 using WebFramework.Swagger;
+using Data.Repositories;
+using Entities;
 
 namespace WeatherForecast
 {
@@ -30,16 +35,22 @@ namespace WeatherForecast
         {
             services.Configure<SiteSettings>(Configuration.GetSection(nameof(SiteSettings)));
 
+            services.AddScoped<IApiCaller, ApiCaller>();
+            services.AddScoped<IOpenWeatherClient, OpenWeatherClient>();
+            services.AddScoped<IRepository<Location>, Repository<Location>>();
+
+            services.InitializeAutoMapper();
             services.AddDbContext(Configuration);
-
             services.AddMinimalMvc();
-
             services.AddCustomApiVersioning();
-
             services.AddSwagger();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        ///This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="env"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 

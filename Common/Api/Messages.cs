@@ -35,6 +35,7 @@
             SuccessSent,
             ErrorSameExist,
             ErrorNotFoundItem,
+            ErrorNotFound,
             ErrorFailedCount,
             ErrorInValidate,
             ErrorUnSecurePassword,
@@ -134,6 +135,7 @@
                 case MessageType.VerifyRejected: Temp = string.Format(" {0} شما رد شد ", Text); break;
                 case MessageType.ErrorSameExist: Temp = string.Format("این {0} قبلا در سامانه ثبت شده است.", Text); break;
                 case MessageType.SuccessSent: Temp = string.Format(" {0} با موفقیت ارسال شد", Text); break;
+                case MessageType.ErrorNotFound: Temp = string.Format(" هیچ {0}دریافت نشد", Text); break;
                 case MessageType.ErrorNotFoundItem: Temp = string.Format(" هیچ {0} با این مشخصات یافت نشد", Text); break;
                 case MessageType.SuccessRegister: Temp = "ثبت نام شما با موفقیت انجام شد."; break;
                 case MessageType.ErrorRegister: Temp = "ثبت نام شما با خطا همرا بود."; break;

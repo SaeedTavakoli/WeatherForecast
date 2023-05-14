@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Common;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.VisualBasic;
 using Newtonsoft.Json;
@@ -19,17 +20,19 @@ namespace WeatherForecast.Services.OpenWeather
         private readonly IConfiguration _configuration;
         private readonly IApiCaller _iApiCaller;
 
+        private readonly string _appId;
+
         private const string url = "http://api.openweathermap.org/data/2.5/";
 
-        public OpenWeatherClient(IConfiguration configuration, IApiCaller iApiCaller)
+        public OpenWeatherClient(IOptionsSnapshot<SiteSettings> settings, IApiCaller iApiCaller)
         {
-            _configuration = configuration;
+            _appId = settings.Value.ApiKey;
             _iApiCaller = iApiCaller;
         }
 
-        public WeatherResponse GetCurrentWeather(string city, float? lat, float? lon)
+        public WeatherResponse GetCurrentWeather(string city, double? lat, double? lon)
         {
-            return _iApiCaller.CallApi<WeatherResponse>(Method.GET, url + $"weather?q={city}&lat={lat}&lon={lon}&units=metric&APPID={_configuration["ApiKey"]}");
+            return _iApiCaller.CallApi<WeatherResponse>(Method.GET, url + $"weather?q={city}&lat={lat}&lon={lon}&units=metric&APPID={_appId}");
         }
 
     }

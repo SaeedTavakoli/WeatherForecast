@@ -8,8 +8,6 @@ namespace WeatherForecast.Services.OpenWeather
 {
     public interface IOpenWeatherClient
     {
-        WeatherResponse GetCurrentWeather(string city, float? lat, float? lon);
-        //WeatherResponse GetCurrentWeatherByCoord(float lat,float lon);
-
+        WeatherResponse GetCurrentWeather(string city = "", double? lat = null, double? lon = null);
     }
 }

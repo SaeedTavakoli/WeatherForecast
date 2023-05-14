@@ -2,7 +2,7 @@
 {
     public class SiteSettings
     {
-        public string Token { get; set; }
+        public string ApiKey { get; set; }
         //public JwtSettings JwtSettings { get; set; }
         //public IdentitySettings IdentitySettings { get; set; }
     }
