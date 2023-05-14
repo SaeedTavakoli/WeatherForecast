@@ -44,7 +44,7 @@ namespace WebFramework.Swagger
             //Add services and configuration to use swagger
             services.AddSwaggerGen(options =>
             {
-                var xmlDocPath = Path.Combine(AppContext.BaseDirectory, "MyApi.xml");
+                var xmlDocPath = Path.Combine(AppContext.BaseDirectory, "WeatherForecast.xml");
                 //show controller XML comments like summary
                 options.IncludeXmlComments(xmlDocPath, true);
 
@@ -90,18 +90,6 @@ namespace WebFramework.Swagger
 
                 #region Add Jwt Authentication
                 //Add Lockout icon on top of swagger ui page to authenticate
-                #region Old way
-                //options.AddSecurityDefinition("Bearer", new ApiKeyScheme
-                //{
-                //    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
-                //    Name = "Authorization",
-                //    In = "header"
-                //});
-                //options.AddSecurityRequirement(new Dictionary<string, IEnumerable<string>>
-                //{
-                //    {"Bearer", new string[] { }}
-                //});
-                #endregion
 
                 //options.AddSecurityRequirement(new OpenApiSecurityRequirement
                 //{
